@@ -27,5 +27,6 @@
     <module>../geotools/modules</module>
     <module>similarity-transform</module>
     <module>proves</module>
+    <module>ntv2-transform</module>
   </modules>
 </project>
