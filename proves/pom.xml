@@ -29,8 +29,18 @@
       <version>${geotools.version}</version>
     </dependency>
     <dependency>
+        <groupId>org.geotools</groupId>
+        <artifactId>gt-shapefile</artifactId>
+        <version>${geotools.version}</version>
+    </dependency>
+    <!--dependency>
       <groupId>org.geotools</groupId>
       <artifactId>similarity-transform</artifactId>
+      <version>${geotools.version}</version>
+    </dependency-->
+    <dependency>
+      <groupId>org.geotools</groupId>
+      <artifactId>ntv2-transform</artifactId>
       <version>${geotools.version}</version>
     </dependency>
   </dependencies>
