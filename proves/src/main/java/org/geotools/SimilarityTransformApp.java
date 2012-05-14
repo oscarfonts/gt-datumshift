@@ -28,12 +28,12 @@ public class SimilarityTransformApp
         //printMathTranformProviders();
         
         // Apply specified transform
-        transform("5166", srcPts, dstPts);        // Direct transform
-        inverseTransform("5166", dstPts, srcPts); // Inverse transform
+        //transform("5166", srcPts, dstPts);        // Direct transform
+        //inverseTransform("5166", dstPts, srcPts); // Inverse transform
 
         // Discover transform via CRS pair
         transform("23031", "25831", srcPts, dstPts); // Direct transform
-        transform("25831", "23031", dstPts, srcPts); // Inverse transform
+        //transform("25831", "23031", dstPts, srcPts); // Inverse transform
         
     }
     

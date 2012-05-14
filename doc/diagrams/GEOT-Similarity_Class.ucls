@@ -1,0 +1,89 @@
+<class-diagram version="1.0.8" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.operation.transform.SimilarityTransformProvider" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/transform/SimilarityTransformProvider.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="718" y="445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.operation.MathTransformProvider" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/MathTransformProvider.java" binary="false">    
+    <position height="-1" width="-1" x="719" y="173"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.operation.transform.AffineTransform2D" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/transform/AffineTransform2D.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="284" y="443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.operation.DefaultMathTransformFactory" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/DefaultMathTransformFactory.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="287" y="173"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="org.opengis.referencing.operation.MathTransformFactory" 
+    project="gt-opengis" file="/gt-opengis/src/main/java/org/opengis/referencing/operation/MathTransformFactory.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="289" y="80"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <realization id="6">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="7">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="8">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="9">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="10" name="lastProvider"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="13" name="inverse">        
+        <position height="13" width="38" x="392" y="461"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="1">        
+        <position height="13" width="18" x="371" y="480"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="false" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

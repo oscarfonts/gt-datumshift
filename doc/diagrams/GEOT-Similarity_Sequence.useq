@@ -1,0 +1,205 @@
+<sequence-diagram version="1.0.8" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="org.geotools.SimilarityTransformApp" project="proves" 
+    file="/proves/src/main/java/org/geotools/SimilarityTransformApp.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="843" width="0" x="0" y="77"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="786" width="0" x="0" y="115"/>    
+    </execution>  
+  </object>  
+  <object id="7" language="java" name="org.geotools.referencing.CRS" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/CRS.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="739" width="0" x="0" y="143"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="682" width="0" x="0" y="181"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="org.geotools.referencing.operation.BufferedCoordinateOperationFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/BufferedCoordinateOperationFactory.java" 
+    binary="false" label="bufferedCoordinateOperationFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="635" width="0" x="0" y="209"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="org.geotools.referencing.operation.AuthorityBackedFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/AuthorityBackedFactory.java" binary="false" 
+    label="authorityBackedFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="14">      
+      <position height="597" width="0" x="0" y="228"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="540" width="0" x="0" y="266"/>    
+    </execution>  
+  </object>  
+  <object id="20" language="java" name="org.geotools.referencing.factory.epsg.ThreadedHsqlEpsgFactory" 
+    project="gt-epsg-hsql" 
+    file="/gt-epsg-hsql/src/main/java/org/geotools/referencing/factory/epsg/ThreadedHsqlEpsgFactory.java" binary="false" 
+    label="threadedHsqlEpsgFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="493" width="0" x="0" y="294"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="237" width="0" x="0" y="436"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="org.geotools.referencing.factory.epsg.FactoryUsingHSQL" project="gt-epsg-hsql" 
+    file="/gt-epsg-hsql/src/main/java/org/geotools/referencing/factory/epsg/FactoryUsingHSQL.java" binary="false" 
+    label="factoryUsingHSQL" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="22">      
+      <position height="455" width="0" x="0" y="313"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="199" width="0" x="0" y="455"/>    
+    </execution>  
+  </object>  
+  <object id="31" language="java" name="org.geotools.referencing.factory.epsg.CoordinateOperationSet" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/epsg/CoordinateOperationSet.java" 
+    binary="false" label="coordinateOperationSet" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="28">      
+      <position height="417" width="0" x="0" y="332"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="360" width="0" x="0" y="370"/>    
+    </execution>    
+    <execution id="36">      
+      <position height="275" width="0" x="0" y="417"/>    
+    </execution>  
+  </object>  
+  <object id="38" language="java" name="org.geotools.referencing.factory.IdentifiedObjectSet.Iter" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/IdentifiedObjectSet.java" binary="false" 
+    label="iter" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="35">      
+      <position height="313" width="0" x="0" y="398"/>    
+    </execution>  
+  </object>  
+  <object id="40" language="java" name="org.geotools.referencing.operation.DefaultMathTransformFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/DefaultMathTransformFactory.java" 
+    binary="false" label="defaultMathTransformFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="30">      
+      <position height="161" width="0" x="0" y="474"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="104" width="0" x="0" y="512"/>    
+    </execution>  
+  </object>  
+  <object id="45" language="java" name="org.geotools.referencing.operation.transform.SimilarityTransformProvider" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/transform/SimilarityTransformProvider.java" 
+    binary="false" label="similarityTransformProvider" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="44">      
+      <position height="57" width="0" x="0" y="540"/>    
+    </execution>  
+  </object>  
+  <object id="48" language="java" name="org.geotools.referencing.operation.transform.AffineTransform2D" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/transform/AffineTransform2D.java" 
+    binary="false" label="affineTransform2D" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="47">      
+      <position height="19" width="0" x="0" y="559"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="transform(java.lang.String,java.lang.String,double[],double[]):void">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" 
+    operation="findMathTransform(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="8" 
+    operation="findMathTransform(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem,boolean):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" 
+    operation="createOperation(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="13" 
+    operation="createOperation(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="16" 
+    operation="createFromDatabase(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" 
+    operation="createFromCoordinateReferenceSystemCodes(java.lang.String,java.lang.String):java.util.Set&lt;CoordinateOperation&gt;">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="21" operation="createFromCoordinateReferenceSystemCodes(java.lang.String,java.lang.String):java.util.Set">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="24" 
+    operation="createCoordinateOperation(java.lang.String):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="27" operation="resolve(int):void">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="28"/>  
+  </message>  
+  <message id="29" 
+    operation="createBaseToDerived(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.parameter.ParameterValueGroup,org.opengis.referencing.cs.CoordinateSystem):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="30"/>  
+  </message>  
+  <message id="32" operation="iterator():java.util.Iterator">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="toNext():void">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="37" 
+    operation="createCoordinateOperation(java.lang.String):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="39" operation="createObject(java.lang.String):org.opengis.referencing.IdentifiedObject">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="36"/>  
+  </message>  
+  <message id="41" 
+    operation="createParameterizedTransform(org.opengis.parameter.ParameterValueGroup):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="42"/>  
+  </message>  
+  <message id="43" 
+    operation="createMathTransform(org.opengis.parameter.ParameterValueGroup):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="46" operation="AffineTransform2D(double,double,double,double,double,double)">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="47"/>  
+  </message>
+</sequence-diagram>
