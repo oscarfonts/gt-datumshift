@@ -1,0 +1,129 @@
+<sequence-diagram version="1.0.8" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKTTest" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/factory/epsg/CoordinateOperationFactoryUsingWKTTest.java" 
+    binary="false" label="coordinateOperationFactoryUsingWKTTest" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="284" width="0" x="0" y="80"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="331" width="271" x="5" y="382"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="org.geotools.referencing.ReferencingFactoryFinder" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/ReferencingFactoryFinder.java" binary="false" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="246" width="0" x="0" y="99"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="189" width="0" x="0" y="137"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="org.geotools.factory.FactoryCreator" project="gt-metadata" 
+    file="/gt-metadata/src/main/java/org/geotools/factory/FactoryCreator.java" binary="false" label="factoryCreator" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="12">      
+      <position height="142" width="0" x="0" y="165"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="85" width="0" x="0" y="203"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="19" width="0" x="0" y="250"/>    
+    </execution>  
+  </object>  
+  <object id="18" language="java" name="org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKT" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/epsg/CoordinateOperationFactoryUsingWKT.java" 
+    binary="false" label="coordinateOperationFactoryUsingWKT" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="7">      
+      <position height="293" width="0" x="0" y="401"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="236" width="0" x="0" y="439"/>    
+    </execution>  
+  </object>  
+  <object id="23" language="java" name="org.geotools.referencing.factory.PropertyCoordinateOperationAuthorityFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/PropertyCoordinateOperationAuthorityFactory.java" 
+    binary="false" label="propertyCoordinateOperationAuthorityFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="22">      
+      <position height="189" width="0" x="0" y="467"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="132" width="0" x="0" y="505"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="66" width="0" x="0" y="552"/>    
+    </execution>  
+  </object>  
+  <object id="30" language="java" name="org.geotools.referencing.operation.DefaultMathTransformFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/operation/DefaultMathTransformFactory.java" 
+    binary="false" label="defaultMathTransformFactory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="29">      
+      <position height="19" width="0" x="0" y="580"/>    
+    </execution>  
+  </object>  
+  <message id="3" 
+    operation="getCoordinateOperationAuthorityFactory(java.lang.String,org.geotools.factory.Hints):org.opengis.referencing.operation.CoordinateOperationAuthorityFactory">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" 
+    operation="createCoordinateOperation(java.lang.String):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" 
+    operation="getAuthorityFactory(java.lang.Class&lt;T&gt;,java.lang.String,org.geotools.factory.Hints,org.geotools.factory.Hints.Key)">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" 
+    operation="getServiceProvider(java.lang.Class&lt;T&gt;,javax.imageio.spi.ServiceRegistry.Filter,org.geotools.factory.Hints,org.geotools.factory.Hints.Key)">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="14" 
+    operation="getServiceProvider(java.lang.Class&lt;T&gt;,javax.imageio.spi.ServiceRegistry.Filter,org.geotools.factory.Hints,org.geotools.factory.Hints.Key)">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" 
+    operation="getServiceImplementation(java.lang.Class&lt;T&gt;,java.lang.Class&lt;?&gt;,javax.imageio.spi.ServiceRegistry.Filter,org.geotools.factory.Hints)">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="19" 
+    operation="createCoordinateOperation(java.lang.String):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" 
+    operation="createCoordinateOperation(java.lang.String):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="24" 
+    operation="createFromCoordinateReferenceSystemCodes(java.lang.String,java.lang.String):java.util.Set&lt;CoordinateOperation&gt;">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" 
+    operation="createFromCoordinateReferenceSystemCodes(java.lang.String,java.lang.String,boolean):org.opengis.referencing.operation.CoordinateOperation">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" operation="createFromWKT(java.lang.String):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>
+</sequence-diagram>

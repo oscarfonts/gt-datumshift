@@ -1,0 +1,120 @@
+<class-diagram version="1.0.8" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.PropertyCoordinateOperationAuthorityFactory" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/PropertyCoordinateOperationAuthorityFactory.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="243" y="517"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKT" project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/epsg/CoordinateOperationFactoryUsingWKT.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="753" y="519"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="false" protected="false" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="org.opengis.referencing.operation.CoordinateOperationAuthorityFactory" project="gt-opengis" 
+    file="/gt-opengis/src/main/java/org/opengis/referencing/operation/CoordinateOperationAuthorityFactory.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="487" y="272"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.factory.DeferredAuthorityFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/DeferredAuthorityFactory.java" binary="false">    
+    <position height="-1" width="-1" x="754" y="321"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.factory.DirectAuthorityFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/DirectAuthorityFactory.java" binary="false">    
+    <position height="-1" width="-1" x="243" y="272"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.factory.AbstractAuthorityFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/AbstractAuthorityFactory.java" binary="false">    
+    <position height="-1" width="-1" x="486" y="126"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.factory.ReferencingFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/ReferencingFactory.java" binary="false">    
+    <position height="-1" width="-1" x="487" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="org.geotools.referencing.factory.BufferedAuthorityFactory" 
+    project="gt-referencing" 
+    file="/gt-referencing/src/main/java/org/geotools/referencing/factory/BufferedAuthorityFactory.java" binary="false">    
+    <position height="-1" width="-1" x="754" y="228"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="10">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <realization id="12">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

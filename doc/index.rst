@@ -11,7 +11,7 @@ Continguts:
    :maxdepth: 2
 
    intro
-   code
+   geotools
+   geoserver
+   tests
    use
-   test
-
