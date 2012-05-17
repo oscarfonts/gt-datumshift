@@ -17,29 +17,49 @@ Tasques realitzades
 #. Incorporació de la llibreria jGridShift com un nou transformador dins del mòdul de referenciació espacial de GeoTools.
 #. Establiment dels mecanismes per declarar l’existència de reixetes de transformació a diferents ubicacions, depenent del context d’execució.
 #. Modificació de l’algorisme que escull la transformació a emprar en cada moment. Contempla dos possibles escenaris:
+
    * Descoberta automàtica de la transformació més adient, a partir de la base de dades EPSG.
    * Forçat de l’ús d’una transformació concreta, configurable per l’usuari.
+
 #. Integració d’aquesta nova funcionalitat base al projecte Geoserver, perquè es puguo.
 #. Desenvolupament de tests unitaris per ambdós projectes, mitjançant junit.
 #. Documentació del codi per a desenvolupadors, mitjançant javadoc.
 #. Ampliació del manual d'usuari (oficial, en anglès) de GeoServer.
 #. Seguiment de la incorporació del nou codi i documentació a les següents versions oficials d’ambdós projectes, incloent-hi suport tècnic i seguiment de les proves realitzades per altres usuaris en les fases *beta* dels productes.
-#. Tests de precisió i rendiment de l’aplicació amb tres escenaris:
-   * Transformació de 7 paràmentres en coordenades geocèntriques (situació anterior).
-   * Transformació mitjançant malla NTv2 (coordenades geodèsiques).
-   * Transformació de semblança bidimensional (coordenades UTM).
-#. Redacció i publicació d’aquest manual.
+#. Tests de precisió i rendiment de l’aplicació, en tres escenaris:
 
-El codi i documentació resten sotmesos a les llicències i condicions d’ús establerts als projectes als quals s’incorporen: LGPL per a GeoTools, i GPL per a GeoServer.
+   * Transformació de 7 paràmetres sel·leccionada per GeoServer en l'escenari previ a aquest desenvolupament.
+   * Transformació de semblança bidimensional EPSG:5166.
+   * Transformació mitjançant la malla NTv2 `100800401.gsb`.
+
+#. Redacció d’aquest informe.
+
+El codi aportat als projectes resta sotmès a les llicències i condicions d’ús establertes als projectes als quals s’incorporen: LGPL per al codi de GeoTools, i GPL per al codi de GeoServer.
 
 El codi i documentació oficials dels projectes es poden consultar a partir dels respectius llocs web:
 
 * GeoTools: http://www.geotools.org
 * GeoServer: http://www.geoserver.org
 
-Seccions d'aquest document
---------------------------
+Condicions d'ús d'aquest document
+---------------------------------
 
-* Diagrames de classes, javadoc, interacció (UML).
-* Tests de precisió i rendiment. 
-* Manual d'ús (traducció de l'oficial).
+Aquest document està subjecte a una llicència `Reconeixement-CompartirIgual 3.0 No adaptada de Creative Commons <http://creativecommons.org/licenses/by-sa/3.0/>`_.
+
+.. figure:: images/CC-by-sa.svg
+   :align: center
+
+Sou lliures de:
+
+   * Copiar, distribuir i comunicar públicament l'obra.
+   * Fer-ne obres derivades.
+   * Fer un ús comercial de l'obra.
+
+Amb les condicions següents:
+
+   * **Reconeixement**: Heu de reconèixer els crèdits de l'obra de la manera especificada per l'autor o el llicenciador (però no d'una manera que suggereixi que us donen suport o rebeu suport per l'ús que feu l'obra).
+   * **Compartir Igual**: Si altereu o transformeu aquesta obra, o en genereu obres derivades, només podeu distribuir l'obra generada amb una llicència idèntica a aquesta.
+
+.. note::
+
+   Quan reutilitzeu o distribuïu l'obra, heu de deixar ben clar els termes de la llicència de l'obra.

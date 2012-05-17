@@ -1,0 +1,51 @@
+<class-diagram version="1.0.8" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="org.vfny.geoserver.crs.GeoserverGridShiftLocator" 
+    project="main" file="/main/src/main/java/org/vfny/geoserver/crs/GeoserverGridShiftLocator.java" binary="false">    
+    <position height="-1" width="-1" x="111" y="160"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="org.vfny.geoserver.crs.GeoserverWKTOperationFactory" 
+    project="main" file="/main/src/main/java/org/vfny/geoserver/crs/GeoserverWKTOperationFactory.java" binary="false">    
+    <position height="-1" width="-1" x="424" y="161"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.gridshift.GridShiftLocator" project="main" 
+    file="/home/oscar/.m2/repository/org/geotools/gt-referencing/8-SNAPSHOT/gt-referencing-8-SNAPSHOT.jar" binary="true">    
+    <position height="-1" width="-1" x="111" y="42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKT" project="main" 
+    file="/home/oscar/.m2/repository/org/geotools/gt-referencing/8-SNAPSHOT/gt-referencing-8-SNAPSHOT.jar" binary="true">    
+    <position height="-1" width="-1" x="425" y="43"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <generalization id="5">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <realization id="6">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

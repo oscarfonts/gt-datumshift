@@ -15,3 +15,4 @@ Continguts:
    geoserver
    tests
    use
+   thanks

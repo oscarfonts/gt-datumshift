@@ -55,12 +55,6 @@ El descriptor de la operació permet a ``MathTransformFactory`` deduïr quin tip
 
    Classes rellevants per a la transformació de semblança.
 
-Javadoc
-.......
-
-.. toctree::
-   javadoc/SimilarityTransformProvider
-
 Determinació i instanciació d'una transformació
 ...............................................
 
@@ -150,16 +144,6 @@ En tot cas, després de localitzar el recurs, ``NTv2Transform`` invocarà la cla
 GeoTools també incorporava una implementació de transformacions de malla en format NADCON. Aquesta funcionalitat no s'aprofitava a GeoServer perquè hi mancava una forma flexible d'indicar la localització dels fitxers de malla i de gestionar la seva càrrega en memòria.
 
 Per tant, s'ha aprofitat l'avinentesa per crear una ``NADCONGridShiftFactory`` i adaptar la ``NADCONTransform`` existent per fer ús de ``GridShiftLocator``, de manera anàloga a com ho fa ``NTv2Transform``. Aquest treball amb malles NADCON ha estat realitzada per Andrea Aime, i no forma part d'aquest encàrrec, pel que no entrarem en més detalls. Valgui destacar, però, com aquesta solució ha contribuït a la millora d'altres funcionalitats a GeoTools i GeoServer.
-
-Javadoc
-.......
-
-.. toctree::
-   javadoc/NTv2Transform
-   javadoc/NTv2Transform.Provider
-   javadoc/NTv2GridShiftFactory
-   javadoc/GridShiftLocator
-   javadoc/ClasspathGridShiftLocator
 
 Invocació d'una transformació de coordenades
 ............................................
@@ -260,13 +244,6 @@ Transformació geocèntrica, precedida per una conversió d'el·lipsoidals a geo
 
 Cada operació pot ser descrita en una única línia, o es pot trencar en diverses línies per fer-les més llegibles, afegint una barra inversa "\\" al final de cada línia, que indiqui la seva continuació, com als exemples anteriors.
 
-Javadoc
-.......
-
-.. toctree::
-   javadoc/PropertyCoordinateOperationAuthorityFactory
-   javadoc/CoordinateOperationFactoryUsingWKT
-
 Instanciació de factories
 .........................
 
@@ -290,3 +267,19 @@ Instanciació d'una transformació matemàtica personalitzada
 ..........................................................
 
 A la segona seqüència de la figura es mostra com ``CoordinateOperationFactoryUsingWKT`` crea una operació de coordenades. Primer cercarà a la caché pròpia i, si no la troba, encarregarà la seva creacio a ``PropertyCoordinateOperationAuthorityFactory``. Aquesta cercarà la definició al fitxer de *properties*, i llegirà la transformació matemàtica en format WKT. De la creació de la transformació matemàtica s'encarrega ``DefaultMathTransformFactory`` que té un mètode capaç de crear ``MathTransform``  partir d'una cadena de text en WKT.
+
+Javadoc
+-------
+
+A continuació es proporciona una traducció al català de la documentació de codi *javadoc* per a les classes contribuïdes al projecte.
+
+.. toctree::
+   javadoc/SimilarityTransformProvider
+   javadoc/NTv2Transform
+   javadoc/NTv2Transform.Provider
+   javadoc/NTv2GridShiftFactory
+   javadoc/GridShiftLocator
+   javadoc/ClasspathGridShiftLocator
+   javadoc/PropertyCoordinateOperationAuthorityFactory
+   javadoc/CoordinateOperationFactoryUsingWKT
+
