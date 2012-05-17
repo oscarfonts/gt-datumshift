@@ -17,7 +17,7 @@ Herència::
 
 Signatura:
 
-.. code-block:: Java
+.. code-block:: java
 
     public class SimilarityTransformProviderextends MathTransformProvider
 

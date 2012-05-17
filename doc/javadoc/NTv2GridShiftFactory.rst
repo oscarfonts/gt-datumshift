@@ -14,7 +14,7 @@ Herència::
 
 Signatura:
 
-.. code-block:: Java
+.. code-block:: java
 
    public class NTv2GridShiftFactory extends ReferencingFactory implements BufferedFactory
 
