@@ -34,19 +34,27 @@ package co.geomati;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Set;
 
 import org.geotools.data.FileDataStore;
 import org.geotools.data.FileDataStoreFinder;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.data.simple.SimpleFeatureSource;
+import org.geotools.factory.AbstractFactory;
+import org.geotools.factory.Hints;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.ReferencingFactoryFinder;
+import org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKT;
+import org.geotools.referencing.factory.epsg.FactoryUsingWKT;
+import org.geotools.referencing.operation.BufferedCoordinateOperationFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.opengis.referencing.crs.CRSAuthorityFactory;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.operation.CoordinateOperation;
+import org.opengis.referencing.operation.CoordinateOperationFactory;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 
@@ -56,28 +64,42 @@ public class PerformanceTest {
     
     static final String SOURCE_CRS = "23031";
     static final String TARGET_CRS = "25831";
-    static final String ED50_SHP = "/BT5M_289-126/ED50.shp";
-    static final String ETRS89_SHP = "/BT5M_289-126/ETRS89.shp";
-    static final int ITERATIONS = 6;
-    static final String[] TRANSFORMS = {"identity", "similarity", "grid", "7params"};
+    static final String ED50_SHP = "/BT5M_289-126/linies_ED50.shp";
+    static final String ETRS89_SHP = "/BT5M_289-126/linies_ETRS89.shp";
+    static final int DISCARD = 10;
+    static final int ITERATIONS = 25;
+    static final String[] TRANSFORMS = {"7params", "grid", "similarity", "identity"};
     
     CoordinateReferenceSystem sourceCRS;
     CoordinateReferenceSystem targetCRS;
     SimpleFeatureCollection featureCollection;
+    private URL shpLocation;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception {       
         CRSAuthorityFactory fact = ReferencingFactoryFinder.getCRSAuthorityFactory("epsg", null);
         sourceCRS = fact.createCoordinateReferenceSystem(SOURCE_CRS);
-        targetCRS = fact.createCoordinateReferenceSystem(TARGET_CRS);        
-        featureCollection = loadShp(getClass().getResource(ED50_SHP));
+        targetCRS = fact.createCoordinateReferenceSystem(TARGET_CRS);
+        shpLocation = getClass().getResource(ED50_SHP);
     }
     
     @Test
     public void test() throws Exception {
-        // TODO test custom TRANSFORMS
-        MathTransform mt = CRS.findMathTransform(sourceCRS, targetCRS);
-        iterate(mt);
+        TestWKTOperationFactory factory;
+        for(int j=0; j<2; j++) { // Repeat twice.
+            for(int i=0;i<TRANSFORMS.length;i++) { // Test for each transform
+                CRS.reset("all");
+
+                String definitions = "/operations/"+TRANSFORMS[i]+".properties";
+                factory = new TestWKTOperationFactory(definitions);
+                ReferencingFactoryFinder.addAuthorityFactory(factory);
+                
+                featureCollection = loadShp(shpLocation);
+                iterate(CRS.findMathTransform(sourceCRS, targetCRS));
+
+                ReferencingFactoryFinder.removeAuthorityFactory(factory);
+            }
+        }
     }
     
     private SimpleFeatureCollection loadShp(URL url) throws IOException {
@@ -90,10 +112,12 @@ public class PerformanceTest {
         System.out.println("Applying transform: " + mt.toWKT());
         long time[] = new long[ITERATIONS];
         double sum = 0;
-        for (int i=0; i<time.length; i++) {
-            time[i] = measureTransformTime(mt);
-            sum += time[i];
-            //System.out.println("  Iteration "+i+": " + time[i] + " ms ");
+        for (int i=-DISCARD; i<time.length; i++) {
+            if(i>=0) {
+                time[i] = measureTransformTime(mt);
+                sum += time[i];
+                //System.out.println("  Iteration "+i+": " + time[i] + " ms ");
+            }
         }
         double avg = (double)sum/time.length;
         sum = 0;
