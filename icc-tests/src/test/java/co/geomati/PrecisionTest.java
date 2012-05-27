@@ -39,7 +39,7 @@ public class PrecisionTest {
     static final String TARGET_CRS = "25831";
     static final String ED50_SHP = "/BT5M_289-126/punts_ED50.shp";
     static final String ETRS89_SHP = "/BT5M_289-126/punts_ETRS89.shp";
-    static final String[] TRANSFORMS = {"7params", "grid", "grid_ign", "similarity", "identity"};
+    static final String[] TRANSFORMS = {"noshift", "7params", "grid", "grid_ign", "similarity"};
 
     CoordinateReferenceSystem sourceCRS;
     CoordinateReferenceSystem targetCRS;
@@ -111,7 +111,7 @@ public class PrecisionTest {
         for (i=0; i<distance.length; i++) {
             sum += Math.pow((distance[i] - avg), 2);
         }
-        double stddev = Math.sqrt(sum /10);
+        double stddev = Math.sqrt(sum/distance.length);
         System.out.println("    Transformed "+i+" geometries averaging "+ avg + " ± " + stddev + " m");
         iterator.close();
         

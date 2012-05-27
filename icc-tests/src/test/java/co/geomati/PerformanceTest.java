@@ -119,12 +119,12 @@ public class PerformanceTest {
                 //System.out.println("  Iteration "+i+": " + time[i] + " ms ");
             }
         }
-        double avg = (double)sum/time.length;
+        double avg = sum/time.length;
         sum = 0;
         for (int i=0; i<time.length; i++) {
             sum += Math.pow((time[i] - avg), 2);
         }
-        double stddev = Math.sqrt(sum /10); 
+        double stddev = Math.sqrt(sum/time.length); 
         System.out.println("Transformation time ("+ITERATIONS+" iterations): " + avg + " ± " + stddev + " ms");        
     }
     

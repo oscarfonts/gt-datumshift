@@ -1,0 +1,59 @@
+<class-diagram version="1.0.8" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.operation.transform.SimilarityTransformProviderTest" project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/operation/transform/SimilarityTransformProviderTest.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="583" y="104"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.operation.transform.NTv2TransformTest" project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/operation/transform/NTv2TransformTest.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="341" y="188"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.gridshift.TestGridShiftLocator" project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/factory/gridshift/TestGridShiftLocator.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="122" y="111"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKTTest" project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/factory/epsg/CoordinateOperationFactoryUsingWKTTest.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="626" y="241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" 
+    name="org.geotools.referencing.factory.gridshift.NTv2GridShiftFactoryTest" project="gt-referencing" 
+    file="/gt-referencing/src/test/java/org/geotools/referencing/factory/gridshift/NTv2GridShiftFactoryTest.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="120" y="256"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

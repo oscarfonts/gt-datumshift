@@ -46,7 +46,7 @@ Condicions d'ús d'aquest document
 
 Aquest document està subjecte a una llicència `Reconeixement-CompartirIgual 3.0 No adaptada de Creative Commons <http://creativecommons.org/licenses/by-sa/3.0/>`_.
 
-.. figure:: images/CC-by-sa.svg
+.. figure:: images/CC-by-sa.png
    :align: center
 
 Sou lliures de:
