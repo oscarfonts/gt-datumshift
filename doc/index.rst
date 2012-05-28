@@ -8,7 +8,7 @@ Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver
 Continguts:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    geotools

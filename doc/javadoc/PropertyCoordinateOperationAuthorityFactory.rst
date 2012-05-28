@@ -18,7 +18,9 @@ Signatura:
 
 .. code-block:: java
 
-    public class PropertyCoordinateOperationAuthorityFactoryextends DirectAuthorityFactoryimplements CoordinateOperationAuthorityFactory
+    public class PropertyCoordinateOperationAuthorityFactory
+        extends DirectAuthorityFactory
+        implements CoordinateOperationAuthorityFactory
 
 Descripció:
 
@@ -32,7 +34,8 @@ Les entrades al fitxer de propietats prenen aquest format::
 
 Exemples::
 
-   4230,4258=PARAM_MT["NTv2", PARAMETER["Latitude and longitude difference file", "100800401.gsb"]]
+   4230,4258=PARAM_MT["NTv2", \
+       PARAMETER["Latitude and longitude difference file", "100800401.gsb"]]
    23031,25831=PARAM_MT["Similarity transformation", \
        PARAMETER["Ordinate 1 of evaluation point in target CRS", -129.549], \
        PARAMETER["Ordinate 2 of evaluation point in target CRS", -208.185], \
@@ -75,10 +78,10 @@ PropertyCoordinateOperationAuthorityFactory
 
 .. code-block:: java
 
-    public PropertyCoordinateOperationAuthorityFactory(ReferencingFactoryContainer factories,
-                                                       Citation authority,
-                                                       URL definitions)
-                                                throws IOException
+    public PropertyCoordinateOperationAuthorityFactory(
+                ReferencingFactoryContainer factories,
+                Citation authority,
+                URL definitions) throws IOException
 
 Crea una factoria per a l'autoritat donada a partir del fitxer donat.
 
@@ -103,8 +106,7 @@ createCoordinateOperation
 .. code-block:: java
 
     public CoordinateOperation createCoordinateOperation(String code)
-                                                  throws NoSuchAuthorityCodeException,
-                                                         FactoryException
+                throws NoSuchAuthorityCodeException, FactoryException
 
 Crea una operació a partir del seu identificador.
 
@@ -136,10 +138,9 @@ createFromCoordinateReferenceSystemCodes
 
 .. code-block:: java
 
-    public Set<CoordinateOperation> createFromCoordinateReferenceSystemCodes(String sourceCRS,
-                                                                             String targetCRS)
-                                                                      throws NoSuchAuthorityCodeException,
-                                                                             FactoryException
+    public Set<CoordinateOperation> createFromCoordinateReferenceSystemCodes(
+                String sourceCRS, String targetCRS)
+                        throws NoSuchAuthorityCodeException, FactoryException
 
 Crea una ``CoordinateOperation`` a partir d'un parell de codis CRS.
 Aquest mètode retorna un a sola operació a partir del fitxer de *properties*.
@@ -148,7 +149,9 @@ Si no es troba cap operació, retornarà un conjunt buit.
 
 Especificat a:
 
-``createFromCoordinateReferenceSystemCodes`` a la interfície ``CoordinateOperationAuthorityFactory``
+``createFromCoordinateReferenceSystemCodes``
+a la interfície
+``CoordinateOperationAuthorityFactory``
 
 Sobreescriu:
 

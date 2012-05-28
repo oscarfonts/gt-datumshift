@@ -16,7 +16,8 @@ Signatura:
 
 .. code-block:: java
 
-    public class NTv2Transform extends AbstractMathTransform implements MathTransform2D, Serializable
+    public class NTv2Transform extends AbstractMathTransform
+        implements MathTransform2D, Serializable
 
 Descripció:
 

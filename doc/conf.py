@@ -141,7 +141,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'IncorporacidetransformacionsdemallaNTv2aGeotoolsiaGeoserver.tex', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver Documentation',
+  ('index', 'IncorporacidetransformacionsdemallaNTv2aGeotoolsiaGeoserver.tex', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver',
    u'Oscar Fonts', 'manual'),
 ]
 
@@ -215,7 +215,7 @@ latex_papersize = 'a4'
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'incorporacidetransformacionsdemallantv2ageotoolsiageoserver', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver Documentation',
+    ('index', 'incorporacidetransformacionsdemallantv2ageotoolsiageoserver', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver',
      [u'Oscar Fonts'], 1)
 ]
 
@@ -229,7 +229,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'IncorporacidetransformacionsdemallaNTv2aGeotoolsiaGeoserver', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver Documentation',
+  ('index', 'IncorporacidetransformacionsdemallaNTv2aGeotoolsiaGeoserver', u'Incorporació de transformacions de malla NTv2 a Geotools i a Geoserver',
    u'Oscar Fonts', 'IncorporacidetransformacionsdemallaNTv2aGeotoolsiaGeoserver', 'One line description of project.',
    'Miscellaneous'),
 ]

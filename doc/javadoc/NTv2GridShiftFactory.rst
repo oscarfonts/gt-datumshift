@@ -16,7 +16,8 @@ Signatura:
 
 .. code-block:: java
 
-   public class NTv2GridShiftFactory extends ReferencingFactory implements BufferedFactory
+   public class NTv2GridShiftFactory extends ReferencingFactory
+       implements BufferedFactory
 
 Descripció:
 

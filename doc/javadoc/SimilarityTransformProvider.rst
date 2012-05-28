@@ -90,7 +90,8 @@ createMathTransform
 
 .. code-block:: java
 
-    protected MathTransform createMathTransform(ParameterValueGroup values) throws ParameterNotFoundException
+    protected MathTransform createMathTransform(ParameterValueGroup values)
+        throws ParameterNotFoundException
 
 Construeix una transformació matemàtica ``AffineTransform2D`` amb els valors de paràmetres especificats.
 La transformació de semblança és un cas particular d'una transformació afí 2D on::

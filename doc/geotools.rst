@@ -1,16 +1,14 @@
 Desenvolupament a GeoTools
 ==========================
 
-GeoTools està construït de manera que la seva funcionalitat pugui ser ampliada mitjançant plug-ins sense haver de modificar el codi base. D'aquesta manera, es poden afegir noves implementacions de les API existents simplement afegint les noves llibreries al classpath. 
+GeoTools està construït de manera que la seva funcionalitat pugui ser ampliada mitjançant *plug-ins*, sense haver de modificar el codi base. D'aquesta manera, es poden afegir noves implementacions de les API existents simplement afegint les noves llibreries al classpath. 
 
-GeoTools utilitza un sistema de descoberta de noves implementacions estàndard de java, anomenat SPI (Service Provider Interface).
+GeoTools utilitza un sistema de descoberta de noves funcionalitats, anomenat SPI (Service Provider Interface), proporcionat de manera estàndard per Java.
 
 Les API defineixen una sèrie d'interfícies. Les diferents implementacions s'instancien mitjançant factories, que es registren a l'SPI per ser descobertes en temps d'execució.
 
 Transformació de semblança
 --------------------------
-
-Les transformacions matemàtiques s'instancien mitjançant la implementació per defecte de la interfície ``MathTransformFactory``, anomenada ``DefaultMathTransformFactory``. Aquesta factoria crearà una ``MathTransform`` d'un tipus o un altre en funció dels paràmetres que rebi. La creació es produeix invocant el ``Provider``, concretament el seu mètode ``createMathTransform``.
 
 Una transformació afí es defineix amb una matriu 3x3, de la següent forma:
 
@@ -34,20 +32,22 @@ La transformació de semblança es pot expressar com una transformació afí:
 
 on :math:`t_x` i :math:`t_y` és la traslació, :math:`\theta` la rotació, i :math:`\alpha` el factor d'escala.
 
-Per tant, l'estratègia d'implementació ha consistit, simplement, a crear un ``SimilarityTransformProvider`` que calcula els valors de la matriu per instanciar una ``AffineTransform2D`` seguint l'equivalència anterior.
+Les transformacions matemàtiques s'instancien mitjançant la implementació per defecte de la interfície ``MathTransformFactory``, anomenada ``DefaultMathTransformFactory``. Aquesta factoria crearà una ``MathTransform`` d'un tipus o un altre en funció dels paràmetres que rebi. La creació es produeix invocant el ``Provider``, concretament el seu mètode ``createMathTransform``.
 
-Internament, doncs, GeoToools tractarà amb una transformació afí, a tots els efectes, encara que hagi estat creada a partir d'una definició de transformció de semblança.
+Per tant, l'estratègia d'implementació ha consistit, simplement, a crear un ``SimilarityTransformProvider`` que calcula els valors de la matriu per instanciar una ``AffineTransform2D`` seguint la definició matricial descrita.
+
+Internament, doncs, GeoToools tractarà la transformació de semblança com una transformació afí a tots els efectes, encara que hagi estat creada a partir d'una definició de transformció de semblança.
 
 Un altre objectiu del ``Provider`` és definir els noms i identificadors EPSG de que es composa aquesta transformació:
 
 * *Similarity transformation* (EPSG::9621):
 
-  * *Ordinate 1 of evaluation point in target CRS* (EPSG::8621)
-  * *Ordinate 2 of evaluation point in target CRS* (EPSG::8622)
-  * *Scale difference* (EPSG::8611)
-  * *Rotation angle of source coordinate reference system axes* (EPSG::8614)
+  * *Ordinate 1 of evaluation point in target CRS* (EPSG::8621).
+  * *Ordinate 2 of evaluation point in target CRS* (EPSG::8622).
+  * *Scale difference* (EPSG::8611).
+  * *Rotation angle of source coordinate reference system axes* (EPSG::8614).
 
-El descriptor de la operació permet a ``MathTransformFactory`` deduïr quin tipus de ``MathTransformProvider`` ha d'invocar, i els descriptors de cada paràmetre permeten comprovar que els valors es troben dins dels rangs permesos.
+El descriptor de l'operació permet a ``MathTransformFactory`` deduïr quin tipus de ``MathTransformProvider`` ha d'invocar, i els descriptors de cada paràmetre permeten comprovar que els valors es troben dins dels rangs permesos.
 
 .. figure:: diagrams/GEOT-Similarity_Class.PNG
    :target: _images/GEOT-Similarity_Class.PNG
@@ -66,13 +66,13 @@ Al darrera d'aquesta crida aparentment senzilla, s'engega un costós procés per
 
 L'autoritat per defecte és EPSG. La consulta a la base de dades EPSG és *multithread*, per no representar un coll d'ampolla en entorns on s'han de resoldre consultes simultànies (per exemple, quan el codi s'executa dins un servidor web), i fa servir un gestor anomenat HSQL, lleuger, i basat en fitxer. De la consulta a la BDD s'encarreguen les classes ``ThreadedHsqlEpsgFactory`` i ``FactoryUsingHSQL``.
 
-S'extreuen de la Base de Dades totes les operacions disponibles entre els dos CRS donats, per ordre ascendent d'error associat (per tant, les operacions més exactes s'avaluen abans). Les dades sobre les operacions es carreguen a un ``CoordinateOperationSet``. Per estalviar recursos, les operacions matemàtiques en si només s'instanciaran el primer cop que siguin requerides. S'itera llavors sobre aquesta col·lecció, fins que s'aconsegueix instanciar una de les operacions.
+S'extreuen de la Base de Dades totes les operacions disponibles entre els dos CRS donats, per ordre ascendent d'error associat (per tant, les operacions més precises s'avaluen abans). Les dades sobre les operacions es carreguen a un ``CoordinateOperationSet``. Per estalviar recursos, les operacions matemàtiques en si només s'instanciaran el primer cop que siguin requerides. S'itera llavors sobre aquesta col·lecció, fins que s'aconsegueix instanciar una de les operacions.
 
-Pot ser que no es pugui instanciar alguna de les primeres operacions, bé perquè GeoTools no implementa l'algorisme (com passava amb la semblança fins ara), perquè no disposa de les dades necessàries (pensem, per exemple, en una transformació NTv2 de la que no disposem de la malla), o perquè els paràmetres de la BDD són erronis o incoherents (podria passar).
+Pot ser que no es pugui instanciar alguna de les primeres operacions, bé perquè GeoTools no implementa l'algorisme (com passava amb la semblança fins ara), bé perquè no disposa de les dades necessàries (pensem, per exemple, en una transformació NTv2 de la que no disposem de la malla), o bé perquè els paràmetres són erronis o incoherents a la BDD (podria passar).
 
 És aquest iterador ``Iter`` el que intenta instanciar les operacions, fent una crida de nou a ``ThreadedHsqlEpsgFactory`` i ``FactoryUsingHsql``. En aquesta ocasió, aquestes classes s'encarreguen d'adaptar el contingut de la BDD a les característiques finals de l'operació demanada. Per exemple, garantint cert ordre dels eixos [(lat, lon) vs. (lon, lat)], o convertint unitats.
 
-Podria ser que no es trobés la operació directa a la Base de Dades. Llavors es procediria a buscar camins indirectes per resoldre la operació (per exemple, un camí típic de transformació és passar de coordenades projectades a geodèsiques, a geocèntriques, fer un canvi de base, i enrera).
+Podria ser que no es trobés la operació directa a la Base de Dades. Llavors es procediria a buscar camins indirectes per resoldre la operació (per exemple, un camí habitual de transformació és passar de coordenades projectades a geodèsiques, a geocèntriques, fer un canvi de base utilitzant els paràmetres de la BDD, i tornar a convertir a coordenades projectades mitjançant el procés invers).
 
 En el noste cas, la operació EPSG::5166 es troba a la base de dades EPSG, és directa, i sabem resoldre-la. Es crida a ``DefaultMathTransformFactory``, que examinant els paràmetres, arriba al nostre nou ``SimilarityTransformProvider``, que retorna una ``AffineTransform2D``.
 
@@ -115,9 +115,9 @@ S'ha optat doncs per una solució òptima que combina tots dos mètodes:
 
 * Utilitza el primer mètode per comprovar la integritat del fitxer de malla tan aviat com sigui possible. Fer aquesta comprovació és ràpid, no costa memòria, i evita acabar prenent com a bo un fitxer de malla corrupte, el que derivaria en errors posteriors de transformació no recuperables. D'aquesta manera, si el fitxer no es reconeix com a correcte, simplement s'informa l'usuari amb un ``warning``, i es descarta el seu ús, utilitzant el següent mètode de transformació disponible (vegeu com s'itera sobre un ``CoordinateOperationSet`` a `Determinació i instanciació d'una transformació`_).
 
-* Utilitza el segon mètode per carregar tota la malla en memòria, optimitzant el rendiment en les transformacions (pensem, per exemple, que la reprojecció al vol d'un servei WMS requereix la transformació ràpida de molts punts). La càrrega total en memòria es retarda el més possible, només es carrega quan és realment necessari, en el moment de realitzar la primera transformació.
+* Utilitza el segon mètode per carregar tota la malla en memòria, optimitzant el rendiment en les transformacions (pensem, per exemple, que la reprojecció al vol d'un servei WMS requereix la transformació ràpida de molts punts). La càrrega completa de la malla en memòria es retarda el més possible, només es carrega quan és realment necessari, en el moment de realitzar la primera transformació.
 
-* Procura una gestió eficient dels recursos de memòria, mitjançant un ``SoftHashMap`` que actua com a caché dels fitxers de malla carregats. Així, un cop carregada una malla, aquesta es mantindrà en memòria per a posteriors usos, però no indefinidament. Aquesta caché assegura la permanència dels elements (malles) accedits més recentment, però en cas que el sistema necessiti memòria per altres tasques, s'esporgaran els elements en desús. S'equilibra així l'ús de memòria amb els accessos a disc.
+* Procura una gestió eficient dels recursos de memòria, mitjançant un ``SoftHashMap`` que actua com a caché dels fitxers de malla carregats. Així, un cop carregada una malla, aquesta es mantindrà en memòria per a posteriors usos, però no indefinidament. Aquesta caché assegura la permanència dels elements (malles) accedits més recentment, però en cas que el sistema necessiti memòria per a altres tasques, s'esporgaran les malles en desús. S'equilibra així l'ús de memòria amb els accessos a disc.
 
 .. figure:: diagrams/GEOT-GridShift_Class.PNG
    :target: _images/GEOT-GridShift_Class.PNG
@@ -125,19 +125,19 @@ S'ha optat doncs per una solució òptima que combina tots dos mètodes:
 
    Classes rellevants per a les transformacions de malla (NTv2 i NADCON).
 
-Al diagrama de classes observem que s'ha creat una nova transformació matemàtica, ``NTv2Transform``, que embolcalla la classe ``GridShiftFile`` de *jGridShift* i l'adapta per al seu ús com a ``MathTransform`` de GeoTools. Com que la operació és invertible, aquesta classe disposa dels mecanismes necessaris per aplicar la transformació en ambdues direccions.
+Al diagrama de classes observem que s'ha creat una nova transformació matemàtica, ``NTv2Transform``, que embolcalla la classe ``GridShiftFile`` de *jGridShift* i l'adapta per al seu ús com a ``MathTransform`` de GeoTools. Com la operació és invertible, aquesta classe disposa dels mecanismes necessaris per aplicar la transformació en ambdues direccions.
 
-``NTv2Transform`` també conté el corresponent ``Provider``, que, tal com s'ha vist a l'apartat anterior, conté els descriptors EPSG de la transformació i els seus paràmetres, i el mètode per a instanciar-la. En aquest cas els descriptors són:
+``NTv2Transform`` també conté el corresponent ``Provider``, que, tal com s'ha vist a l'apartat anterior, conté els descriptors EPSG de la transformació i els seus paràmetres, així com el mètode per a instanciar-la. En aquest cas els descriptors són:
 
 * *NTv2* (EPSG::9615):
 
-  * *Latitude and longitude difference file* (EPSG::8656)
+  * *Latitude and longitude difference file* (EPSG::8656).
 
-Una característica d'aquest tipus de transformació és que depèn d'un recurs extern, el fitxer de malla, que ha de proporcionar l'usuari. Depenent de l'entorn d'execució (GeoTools, GeoServer, uDig, etc.), aquest recurs pot haver de localitzar-se en diferents llocs.
+Una característica d'aquest tipus de transformació és que depèn d'un recurs extern, el fitxer de malla, que ha de proporcionar l'usuari. Depenent de l'entorn d'execució (GeoTools, GeoServer, uDig, etc.), aquest recurs pot trobar-se en diferents ubicacions.
 
 S'ha creat una interfície ``GridShiftLocator`` amb un sol mètode, ``locateGrid()``, que, donat un nom d'un fitxer, retorna la localització (path absolut o URL) del recurs. I s'ha provist una implementació per defecte, el ``ClasspathGridShitfLocator``, que farà una cerca del fitxer de malla a tot el classpath. Així, ubicant el ``.gsb`` al classpath, GeoTools el detectarà automàticament quan sigui necessari.
 
-``NTv2Transform`` té un mètode ``locateGrid()`` que fa ús dels ``GridShiftLocator`` existents per cercar els fitxers de malla. Està previs que hi pugui haver al sistema diverses implementacions de ``GridShiftLocator``, cadascuna amb una prioritat diferent, de manera que el mètode ``locateGrid()`` els utilitzi per ordre fins trobar el recurs. Veurem aquesta situació al `Desenvolupament a GeoServer`.
+``NTv2Transform`` té un mètode privat, també anomenat ``locateGrid()``, que fa ús dels ``GridShiftLocator`` existents per cercar els fitxers de malla. Està previs que hi pugui haver al sistema diverses implementacions de ``GridShiftLocator``, cadascuna amb una prioritat diferent, de manera que el mètode ``locateGrid()`` de ``NTv2Transform`` els utilitzi per ordre fins trobar el recurs. Veurem aquesta situació al `Desenvolupament a GeoServer`.
 
 En tot cas, després de localitzar el recurs, ``NTv2Transform`` invocarà la classe ``NTv2GridShiftFactory``, encarregada de comprovar la integritat del fitxer, de la seva càrrega en memòria quan sigui oportú, i de gestionar la *softCache* de malles descrita anteriorment.
 
@@ -157,7 +157,7 @@ El mètode habitual, un cop s'ha obtingut la ``MathTransform``, és invocar:
   int nPts = 1;
   double[] srcPts = {41.769413434, 2.188547199};
   double[] dstPts = new double[2];
-  mt.transform.transform(srcPts, 0, dstPts, 0, nPts);
+  mt.transform(srcPts, 0, dstPts, 0, nPts);
 
 El diagrama de seqüència mostra la invocació d'una transformació ``NTv2`` utilitzant el fitxer *sped2et.gsb* procedent del CNIG, i que es troba registrat a la BDD EPSG per a les transformacions entre els CRS ``EPSG:4230`` i ``EPSG:4258``.
 
@@ -177,13 +177,13 @@ Operacions de coordenades personalitzades
 
 Com hem vist, GeoTools utilitza la Base de Dades EPSG com a primera font de dades autoritativa per descobrir la millor transformació en cada cas.
 
-En ocasions, els usuaris disposen de transformacions pròpies, més precises o més actuals que les registrades a EPSG. O, simplement, desitgen poder controlar el procés al marge del mecanisme de descoberta automàtica que utilitza GeoTools per defecte, definint i forçant l'ús d'una transformació personalitzada.
+En ocasions, els usuaris disposen de transformacions pròpies, més precises o més actuals que les registrades a EPSG. O, simplement, desitgen poder controlar el procés al marge del mecanisme de descoberta automàtica que utilitza GeoTools, definint i forçant l'ús d'una transformació personalitzada.
 
 Com hem vist, GeoTools utilitza factories del tipus ``CoordinateOperationFactory``, encarregades de construïr les operacions de coordenades. Per tal de modificar el comportament per defecte, hem introduït una nova ``CoordinateOperationFactoryUsingWKT`` amb una prioritat més alta que ``ThreadedEpsgHsqlFactory``.
 
-D'aquesta manera, abans de consultar la BDD EPSG, es consultarà un fitxer amb definicions personalitzades. En cas de no existir aquest fitxer, la factory no s'activarà. I, en cas de trobar el fitxer però no trobar en ell una definició personalitzada per a una operació determinada, ``CoordinateOperationFactoryUsingWKT`` incorpora un mecanisme intern, ``getFallbackAuthorityFactory()``, que delegarà en la següent ``CoordinateOperationFactory`` de menor prioritat. És a dir, s'utilitzarà ``ThreadedEpsgHsqlFactory``, que accedeix a la BDD EPSG oficial.
+D'aquesta manera, abans de consultar la BDD EPSG, es consultarà un fitxer amb definicions personalitzades. En cas de no existir aquest fitxer, la nova factoria no s'activarà. I, en cas de trobar el fitxer però no trobar en ell una definició personalitzada per a una operació determinada, ``CoordinateOperationFactoryUsingWKT`` incorpora un mecanisme intern, ``getFallbackAuthorityFactory()``, que delegarà en la següent ``CoordinateOperationFactory`` per ordre de prioritat. És a dir, s'utilitzarà ``ThreadedEpsgHsqlFactory``, que accedeix a la BDD EPSG oficial, com a mecanisme de `fallback`.
 
-S'ha proveït GeoTools d'aquesta nova factory, però se li ha assignat una prioritat baixa per defecte, de manera que no interfereixi amb el comportament esperat fins ara per a la majoria de desenvolupadors. En tot cas, existeix un mecanisme senzill per registrar qualsevol factory amb un nivell de prioritat diferent, el que permet utilitzar aquesta característica quan sigui necessari.
+S'ha proveït GeoTools d'aquesta nova factory, però se li ha assignat una prioritat baixa per defecte, de manera que restarà inactiva per defecte. Existeix un mecanisme senzill per registrar qualsevol factoria amb el nivell de prioritat desitjat, el que permet activar l'ús aquesta característica per codi sempre que sigui necessari.
 
 La localització del fitxer amb les definicions personalitzades es pot indicar mitjançant una variable d'entorn de la màquina java en temps d'execució, o bé es pot indicar per codi, o bé, si no es defineix, s'entendrà que es troba en algun lloc del classpath. El fitxer amb les definicions personalitzades porta per nom, per defecte, :file:`epsg_operations.properties`.
 
@@ -193,9 +193,9 @@ La localització del fitxer amb les definicions personalitzades es pot indicar m
 
    Classes rellevants per a la gestió d'operacions de coordenades personalitzades.
 
-Al diagrama de classes s'observa que ``CoordinateOperationFactoryUsingWKT`` extén ``DeferredAuthorityFactory`` que al seu torn deriva de ``BufferedAuthorityFactory``. Aquesta herència incorpora novament funcionalitats de caché per fer una gestió òptima de l'ús de memòria. Com en altres casos, la lectura d'una operació personalitzada en WKT es retarda fins que no sigui estrictament necessària, i posteriorment es manté en memòria amb un temporitzador que monitoritza el seu ús. Si passats 15 minuts una operació no s'ha utilitzat, s'allibera la memòria, i es tornarà a construïr la operació a partir del WKT quan sigui necessari. Això beneficia les situacions amb molta càrrega, on es manté en memòria només allò que s'està utilitzant repetidament en un moment donat.
+Al diagrama de classes s'observa que ``CoordinateOperationFactoryUsingWKT`` extén ``DeferredAuthorityFactory`` que al seu torn deriva de ``BufferedAuthorityFactory``. Aquesta herència incorpora novament funcionalitats de caché per fer una gestió òptima de l'ús de memòria. Com en altres casos, la lectura d'una operació personalitzada en WKT es retarda fins que no sigui estrictament necessària, i posteriorment es manté en memòria amb un temporitzador que monitoritza el seu ús. Si passats 15 minuts una operació no s'ha tornat a utilitzar, s'allibera la memòria, i es tornarà a construïr la operació a partir del WKT quan torni a ser requerida. Això beneficia les situacions amb molta càrrega, on es manté en memòria només allò que s'està utilitzant repetidament en un moment donat.
 
-En realitat, ``CoordinateOperationFactoryUsingWKT`` només gestiona la localització del fitxer de definicions i els mecanismes de caché descrits. La classe que realment processa les definicions personalitzades per construïr les ``MathTransforms`` corresponents és la classe ``PropertyCoordinateOperationAuthorityFactory``, que s'utilitza des de la classe de més alt nivell com a *backing factory* (que significa, aquella que es recolza en dades). D'aquesta manera, el processat de base queda desvinculat de la gestió dels recursos, donant lloc a una arquitectura més flexible.
+En realitat, ``CoordinateOperationFactoryUsingWKT`` només gestiona la localització del fitxer de definicions i els mecanismes de caché descrits. La classe que realment processa les definicions personalitzades per construïr les ``MathTransforms`` corresponents és la classe ``PropertyCoordinateOperationAuthorityFactory``, que s'utilitza des de la classe de més alt nivell com a *backing factory*. D'aquesta manera, el processat de base queda desvinculat de la gestió dels recursos, donant lloc a una arquitectura més flexible.
 
 Operacions personalitzades. Sintaxi i exemples
 ..............................................
@@ -242,7 +242,7 @@ Transformació geocèntrica, precedida per una conversió d'el·lipsoidals a geo
     PARAMETER["semi_minor", 6356752.314140356]]
   ]
 
-Cada operació pot ser descrita en una única línia, o es pot trencar en diverses línies per fer-les més llegibles, afegint una barra inversa "\\" al final de cada línia, que indiqui la seva continuació, com als exemples anteriors.
+Cada operació pot ser descrita en una única línia, o es pot trencar en diverses línies per fer-la més llegible, afegint una barra inversa "\\" al final de cada línia, el que indica la seva continuació. Vegeu els exemples anteriors.
 
 Instanciació de factories
 .........................
@@ -271,7 +271,7 @@ A la segona seqüència de la figura es mostra com ``CoordinateOperationFactoryU
 Javadoc
 -------
 
-A continuació es proporciona una traducció al català de la documentació de codi *javadoc* per a les classes contribuïdes al projecte.
+A continuació es proporciona una traducció al català de la documentació de codi *Javadoc* per a les classes aportades a GeoTools.
 
 .. toctree::
    javadoc/SimilarityTransformProvider

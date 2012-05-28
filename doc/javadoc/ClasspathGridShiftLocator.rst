@@ -16,7 +16,8 @@ Signatura:
 
 .. code-block:: java
 
-    public class ClasspathGridShiftLocator extends AbstractFactory implements GridShiftLocator
+    public class ClasspathGridShiftLocator extends AbstractFactory
+        implements GridShiftLocator
 
 Localitzador de fitxers de malla per defecte, cerca al *classpath*.
 

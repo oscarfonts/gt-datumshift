@@ -19,7 +19,9 @@ Signatura:
 
 .. code-block:: java
 
-    public class CoordinateOperationFactoryUsingWKTextends DeferredAuthorityFactoryimplements CoordinateOperationAuthorityFactory
+    public class CoordinateOperationFactoryUsingWKT
+            extends DeferredAuthorityFactory
+            implements CoordinateOperationAuthorityFactory
 
 Descripció:
 
@@ -235,10 +237,9 @@ createFromCoordinateReferenceSystemCodes
 
 .. code-block:: java
 
-    public Set<CoordinateOperation> createFromCoordinateReferenceSystemCodes(String sourceCRS,
-                                                                             String targetCRS)
-                                                                      throws NoSuchAuthorityCodeException,
-                                                                             FactoryException
+    public Set<CoordinateOperation> createFromCoordinateReferenceSystemCodes(
+                String sourceCRS, String targetCRS)
+                    throws NoSuchAuthorityCodeException, FactoryException
 
 Crea operacions a partir dels sistemes de referència de coordenades donats.
 Aquest mètode cerca al fitxer de propietats `FILENAME`_.
@@ -248,7 +249,9 @@ Si no es troba la operació, s'utilitzarà una factoria alternativa mitjançant
 
 Especificat a
 
-``createFromCoordinateReferenceSystemCodes`` a la interfície ``CoordinateOperationAuthorityFactory``
+``createFromCoordinateReferenceSystemCodes``
+a la interfície
+``CoordinateOperationAuthorityFactory``
 
 Sobreescriu:
 
@@ -276,8 +279,7 @@ createCoordinateOperation
 .. code-block:: java
 
     public CoordinateOperation createCoordinateOperation(String code)
-                                                  throws NoSuchAuthorityCodeException,
-                                                         FactoryException
+                throws NoSuchAuthorityCodeException, FactoryException
 
 Crea una operació a partir del seu identificador.
 
@@ -315,8 +317,7 @@ getFallbackAuthorityFactory
 .. code-block:: java
 
     protected CoordinateOperationAuthorityFactory getFallbackAuthorityFactory()
-                                                                       throws NoSuchAuthorityCodeException,
-                                                                              FactoryException
+                throws NoSuchAuthorityCodeException, FactoryException
 
 Obté la següent ``CoordinateOperationAuthorityFactory`` amb més prioritat després d'aquesta.
 
